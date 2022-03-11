@@ -39,21 +39,29 @@ public class PersonaController {
 	}
 	
 	@PutMapping("/personas/{id}")
-	public ResponseEntity<Persona> update(@PathVariable Long id, @RequestBody Persona persona) {
+	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Persona persona) {
+		if (persona.getName().isEmpty()) {
+			return new ResponseEntity<>("Favor de añadir datos de la persona",HttpStatus.BAD_REQUEST);
+		}
 		Persona personanueva=personaService.save(persona);
 		return new ResponseEntity<>(personanueva,HttpStatus.OK);
 	}
 	
 	@PostMapping("/personas")
-	public ResponseEntity<Persona> create(@RequestBody Persona persona) {
+	public ResponseEntity<Object> create(@RequestBody Persona persona) {
+		
+		if (persona.getName().isEmpty()) {
+			return new ResponseEntity<>("Favor de añadir datos de la persona",HttpStatus.BAD_REQUEST);
+		}
+		
 		Persona personanueva=personaService.save(persona);
 				
 	    return new ResponseEntity<>(personanueva,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/personas/{id}")
-	public ResponseEntity<String> delete(@PathVariable Long id, @RequestBody Persona persona) {
-		personaService.save(null) ;
+	public ResponseEntity<String> delete(@PathVariable Long id) {
+		personaService.delete(id);
 		return new ResponseEntity<>("eliminado correcatamente",HttpStatus.OK);
 	}
 }

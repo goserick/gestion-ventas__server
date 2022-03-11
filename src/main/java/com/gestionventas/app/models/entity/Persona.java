@@ -37,14 +37,14 @@ public class Persona implements Serializable {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<FacturaDTO> facturas;
+	private List<Factura> facturas;
 
 	@Column(name = "created_date")
 	@Temporal(TemporalType.DATE)
 	private Date createdDate;
 
 	public Persona() {
-		facturas = new ArrayList<FacturaDTO>();
+		facturas = new ArrayList<Factura>();
 	}
 
 	@PrePersist
@@ -108,15 +108,15 @@ public class Persona implements Serializable {
 		this.estatus = estatus;
 	}
 
-	public List<FacturaDTO> getFacturas() {
+	public List<Factura> getFacturas() {
 		return facturas;
 	}
 
-	public void setFacturas(List<FacturaDTO> facturas) {
+	public void setFacturas(List<Factura> facturas) {
 		this.facturas = facturas;
 	}
 
-	public void addFacuras(FacturaDTO factura) {
+	public void addFacuras(Factura factura) {
 		facturas.add(factura);
 	}
 	

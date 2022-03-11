@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="pagos")
-public class PagosDTO implements Serializable {
+public class Pago implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class PagosDTO implements Serializable {
 
 	public Long getId() {
 		return id;
-	}
+	} 
 
 	public void setId(Long id) {
 		this.id = id;

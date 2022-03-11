@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="facturas")
-public class FacturaDTO implements Serializable {
+public class Factura implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -43,16 +43,16 @@ public class FacturaDTO implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="factura_id")
-	private List<ProductosDTO> items;
+	private List<Producto> items;
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="factura_id")
-	private List<PagosDTO> pagos;
+	private List<Pago> pagos;
 	
 	
-	public FacturaDTO() {
-		this.items = new ArrayList<ProductosDTO>();
-		this.pagos = new ArrayList<PagosDTO>();
+	public Factura() {
+		this.items = new ArrayList<Producto>();
+		this.pagos = new ArrayList<Pago>();
 	}
 
 	@PrePersist
@@ -100,27 +100,27 @@ public class FacturaDTO implements Serializable {
 		this.persona = persona;
 	}
 	
-	public List<ProductosDTO> getItems() {
+	public List<Producto> getItems() {
 		return items;
 	}
 
-	public void setItems(List<ProductosDTO> items) {
+	public void setItems(List<Producto> items) {
 		this.items = items;
 	}
 	
-	public void addItemFactura(ProductosDTO item){
+	public void addItemFactura(Producto item){
 		this.items.add(item);
 	}
 	
-	public List<PagosDTO> getPagos() {
+	public List<Pago> getPagos() {
 		return pagos;
 	}
 
-	public void setPagos(List<PagosDTO> pagos) {
+	public void setPagos(List<Pago> pagos) {
 		this.pagos = pagos;
 	}
 
-	public void addPagos(PagosDTO pago){
+	public void addPagos(Pago pago){
 		this.pagos.add(pago);
 	}
 	

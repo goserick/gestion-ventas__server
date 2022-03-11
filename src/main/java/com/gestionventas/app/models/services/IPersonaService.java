@@ -2,8 +2,8 @@ package com.gestionventas.app.models.services;
 
 import java.util.List;
 
-import com.gestionventas.app.models.entity.FacturaDTO;
 import com.gestionventas.app.models.entity.Persona;
+import com.gestionventas.app.models.services.dtos.FacturaDTO;
 
 public interface IPersonaService {
 	
@@ -16,5 +16,8 @@ public interface IPersonaService {
 	public void delete(Long id);
 	
 	public FacturaDTO findFacturaByid(Long id);
+	
+	public FacturaDTO saveFactura(FacturaDTO facturaDTO);
+	
 	
 }
